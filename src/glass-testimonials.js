@@ -5,7 +5,8 @@ class GlassTestimonialCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.fontPath = '/fonts/kenpixel.ttf';
+    this.baseUrl = import.meta.env.BASE_URL || '/';
+    this.fontPath = `${this.baseUrl}fonts/kenpixel.ttf`;
     this.textMaterial = null;
     this._buildToken = 0;
     this.init();
@@ -182,7 +183,7 @@ class GlassTestimonialCard extends HTMLElement {
     `;
 
     const quoteIcon = `
-        <img class="quote-icon" src="/icons/quote.png" alt="Quote mark" />
+        <img class="quote-icon" src="${this.baseUrl}icons/quote.png" alt="Quote mark" />
     `;
 
     this.shadowRoot.innerHTML = `
@@ -258,7 +259,8 @@ class GlassTestimonialCard extends HTMLElement {
 
   static configureText() {
     if (GlassTestimonialCard._hbConfigured) return;
-    Text.setHarfBuzzPath('/hb/hb.wasm');
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    Text.setHarfBuzzPath(`${baseUrl}hb/hb.wasm`);
     GlassTestimonialCard._hbConfigured = true;
   }
 
