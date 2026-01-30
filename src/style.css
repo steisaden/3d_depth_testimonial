@@ -2,7 +2,7 @@
 
 :root {
   --font-main: 'Poppins', sans-serif;
-  --bg-color: #161623;
+  /* --bg-color removed to allow shader to show */
 }
 
 * {
@@ -17,7 +17,10 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--bg-color);
+  min-height: 100vh;
+  min-height: 100vh;
+  background-color: #000;
+  /* Fallback: Black so shader can overlay or sit behind */
   overflow: hidden;
 }
 
